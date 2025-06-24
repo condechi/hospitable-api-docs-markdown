@@ -1,0 +1,429 @@
+[
+  {
+    "title": "Public API Overview",
+    "path": null,
+    "level": 1,
+    "url": null,
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Introduction",
+    "path": "/d862b3ee512e6-introduction",
+    "level": 2,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/d862b3ee512e6-introduction",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Authentication",
+    "path": "/xpyjv51qyelmp-authentication",
+    "level": 2,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/xpyjv51qyelmp-authentication",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Versioning",
+    "path": "/adb5d9fe6500b-api-versioning",
+    "level": 2,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/adb5d9fe6500b-api-versioning",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Webhooks",
+    "path": "/2a71deffbef2d-webhooks",
+    "level": 2,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/2a71deffbef2d-webhooks",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Reference",
+    "path": null,
+    "level": 1,
+    "url": null,
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Http Responses",
+    "path": "/6a0626f943b78-http-responses",
+    "level": 1,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/6a0626f943b78-http-responses",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Pagination",
+    "path": "/dbc4b7ed7eb1b-pagination",
+    "level": 1,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/dbc4b7ed7eb1b-pagination",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Including Resources",
+    "path": "/465fd4d45e4b3-including-resources",
+    "level": 1,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/465fd4d45e4b3-including-resources",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Enums & Statuses",
+    "path": "/g5sgfn6j7b0aw-reservation-statuses",
+    "level": 1,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/g5sgfn6j7b0aw-reservation-statuses",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Calendar Restriction",
+    "path": "/hriol5oneuh9u-calendar-restriction",
+    "level": 1,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/hriol5oneuh9u-calendar-restriction",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Inquiry Resource",
+    "path": "/hejtr2jhgbblr-inquiry-resource",
+    "level": 1,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/hejtr2jhgbblr-inquiry-resource",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Partner Portal",
+    "path": "/03fvv8cmnjlqw-partner-portal",
+    "level": 1,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/03fvv8cmnjlqw-partner-portal",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "API reference",
+    "path": "/dp985j2ujsjem-hospitable-api-v2",
+    "level": 1,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/dp985j2ujsjem-hospitable-api-v2",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Properties",
+    "path": null,
+    "level": 2,
+    "url": null,
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Get Properties",
+    "path": "/qc4x36uhxinx3-get-properties",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/qc4x36uhxinx3-get-properties",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Search Properties",
+    "path": "/dz41u3tx6iy20-search-properties",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/dz41u3tx6iy20-search-properties",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Get Property by UUID",
+    "path": "/7fu6aoxy7h0o4-get-property-by-uuid",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/7fu6aoxy7h0o4-get-property-by-uuid",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Get Property Images",
+    "path": "/qpa4niiposx20-get-property-images",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/qpa4niiposx20-get-property-images",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Get Property Calendar",
+    "path": "/d97fb82987ff6-get-property-calendar",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/d97fb82987ff6-get-property-calendar",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Update Property Calendarput",
+    "path": "/lziaxr9e1j27m-update-property-calendar",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/lziaxr9e1j27m-update-property-calendar",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Generate a quote",
+    "path": "/gr9c7bzvso5cv-generate-a-quote",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/gr9c7bzvso5cv-generate-a-quote",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Tag a property",
+    "path": "/m5e2369yzo949-tag-a-property",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/m5e2369yzo949-tag-a-property",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Transactions",
+    "path": null,
+    "level": 2,
+    "url": null,
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "All Payouts",
+    "path": "/8gppzaft1rtgh-all-payouts",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/8gppzaft1rtgh-all-payouts",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Retrieve a Payout",
+    "path": "/51sicn3oof69i-retrieve-a-payout",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/51sicn3oof69i-retrieve-a-payout",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "All Transactions",
+    "path": "/3myi6hxh68bu0-all-transactions",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/3myi6hxh68bu0-all-transactions",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Retrieve a Transaction",
+    "path": "/nhgd4orn1q8en-retrieve-a-transaction",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/nhgd4orn1q8en-retrieve-a-transaction",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Enrichable Shortcodes",
+    "path": null,
+    "level": 2,
+    "url": null,
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "List Enrichable Shortcodes",
+    "path": "/5bike1uzr1lzh-list-enrichable-shortcodes",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/5bike1uzr1lzh-list-enrichable-shortcodes",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Get an Enrichable Shortcode by Key",
+    "path": "/4ftl5xwyo9m6v-get-an-enrichable-shortcode-by-key",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/4ftl5xwyo9m6v-get-an-enrichable-shortcode-by-key",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Set an Enrichable Shortcodeput",
+    "path": "/igvhssim7zhhw-set-an-enrichable-shortcode",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/igvhssim7zhhw-set-an-enrichable-shortcode",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "User",
+    "path": null,
+    "level": 2,
+    "url": null,
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Get User & Billing",
+    "path": "/jzdomv4knfryd-get-user-and-billing",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/jzdomv4knfryd-get-user-and-billing",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Inquries",
+    "path": "/9lujw5cgctxti-get-inquries",
+    "level": 2,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/9lujw5cgctxti-get-inquries",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Get Inquries",
+    "path": "/9lujw5cgctxti-get-inquries",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/9lujw5cgctxti-get-inquries",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Get Inquiry by UUID",
+    "path": "/yczg8erku08qw-get-inquiry-by-uuid",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/yczg8erku08qw-get-inquiry-by-uuid",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Reservations",
+    "path": null,
+    "level": 2,
+    "url": null,
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Get Reservations",
+    "path": "/ih7nc1ovefrcs-get-reservations",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/ih7nc1ovefrcs-get-reservations",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Get Reservation by UUID",
+    "path": "/vpxg8gm5c0fuz-get-reservation-by-uuid",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/vpxg8gm5c0fuz-get-reservation-by-uuid",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Messaging",
+    "path": null,
+    "level": 2,
+    "url": null,
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Get Reservation Messages",
+    "path": "/n6jr1z9iwhm8w-get-reservation-messages",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/n6jr1z9iwhm8w-get-reservation-messages",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Send Message for Reservation",
+    "path": "/2zbqx5029yf5o-send-message-for-reservation",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/2zbqx5029yf5o-send-message-for-reservation",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Send Message for Inquiry",
+    "path": "/74f2albwvbvyq-send-message-for-inquiry",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/74f2albwvbvyq-send-message-for-inquiry",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Reviews",
+    "path": null,
+    "level": 2,
+    "url": null,
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Get Property Reviews",
+    "path": "/e939481b4e780-get-property-reviews",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/e939481b4e780-get-property-reviews",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Respond to a review",
+    "path": "/tgwl6ft55d71i-respond-to-a-review",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/tgwl6ft55d71i-respond-to-a-review",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Schemas",
+    "path": null,
+    "level": 2,
+    "url": null,
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Reservation",
+    "path": "/cpcemltee1eo3-reservation",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/cpcemltee1eo3-reservation",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Property",
+    "path": "/yxkt0gu4kdw8u-property",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/yxkt0gu4kdw8u-property",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Message",
+    "path": "/xw3ayuv96iq0n-message",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/xw3ayuv96iq0n-message",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Review",
+    "path": "/tsfjmhb6l4lib-review",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/tsfjmhb6l4lib-review",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "4xx",
+    "path": "/hh960kr7vyo1c-4xx",
+    "level": 3,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/hh960kr7vyo1c-4xx",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Webhook reference",
+    "path": "/k4ctofvqu0w8g-hospitable-api-v2-webhooks",
+    "level": 1,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/k4ctofvqu0w8g-hospitable-api-v2-webhooks",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Receive Reservation POST",
+    "path": "/0c89462f0c6f5-receive-reservation-post",
+    "level": 2,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/0c89462f0c6f5-receive-reservation-post",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Receive Integration Disconnected POST",
+    "path": "/d219ade7c7f8e-receive-integration-disconnected-post",
+    "level": 2,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/d219ade7c7f8e-receive-integration-disconnected-post",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Receive Property POST",
+    "path": "/b3bacad709e30-receive-property-post",
+    "level": 2,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/b3bacad709e30-receive-property-post",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Receive Property Deleted POST",
+    "path": "/55160f634b662-receive-property-deleted-post",
+    "level": 2,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/55160f634b662-receive-property-deleted-post",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Receive Property Merged POST",
+    "path": "/b15f690088a43-receive-property-merged-post",
+    "level": 2,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/b15f690088a43-receive-property-merged-post",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Receive Message POST",
+    "path": "/d4fc1ec0f3959-receive-message-post",
+    "level": 2,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/d4fc1ec0f3959-receive-message-post",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  },
+  {
+    "title": "Receive Review POST",
+    "path": "/284f6fd0ef513-receive-review-post",
+    "level": 2,
+    "url": "https://developer.hospitable.com/docs/public-api-docs/284f6fd0ef513-receive-review-post",
+    "timestamp": "2025-06-21T08:01:18+00:00Z"
+  }
+]
