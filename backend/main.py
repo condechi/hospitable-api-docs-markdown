@@ -3,20 +3,22 @@ import argparse
 from pathlib import Path
 from backend.fetch import fetch_html
 from backend.toc import load_json, save_json, iso_to_toc_format, is_stale, now_fmt
-from backend.convert import extract_main_div, convert_to_markdown
+from backend.convert import extract_main_div, convert_to_markdown, AVAILABLE_CONVERTERS
 
 # Define paths to source and output files
 TOC_PATH = Path("toc_cache.json")
 CACHE_PATH = Path("scrape_cache.json")
 OUTPUT_PATH = Path("toc_updated.json")
 
-def sync(fetch_missing=False, force=False):
+def sync(fetch_missing=False, force=False, markdown_converter=None):
     """
     Syncs the TOC entries with cached or newly fetched documentation content.
 
     Args:
         fetch_missing (bool): If True, only fetch entries not in the cache.
         force (bool): If True, fetch all entries regardless of cache.
+        markdown_converter (str or None): The Markdown converter to use (e.g., "markdownify", "markitdown").
+                                           If None, all available converters will be used.
 
     Returns:
         None
@@ -30,8 +32,8 @@ def sync(fetch_missing=False, force=False):
 
         # If URL is null, use the title as placeholder content
         if not url:
-            item["content"] = title
-            item["timestamp"] = now_fmt()
+            item["content"] = [{"converter": "placeholder", "markdown": title}]
+            item["timestamp"] = now_fmt()  # Use ISO8601 format
             continue
 
         # Determine whether we need to fetch content
@@ -48,11 +50,20 @@ def sync(fetch_missing=False, force=False):
         # Extract and convert HTML to Markdown, update TOC item
         if url in cache:
             html = cache[url].get("html", "")
-            ts = cache[url].get("timestamp", now_fmt())
+            ts = cache[url].get("timestamp", now_fmt())  # Use ISO8601 format
             div_html = extract_main_div(html)
-            markdown = convert_to_markdown(div_html)
-            item["content"] = markdown
-            item["timestamp"] = iso_to_toc_format(ts)
+
+            # Generate Markdown for all converters or a specific one
+            content = []
+            converters_to_use = (
+                [markdown_converter] if markdown_converter else AVAILABLE_CONVERTERS.keys()
+            )
+            for converter in converters_to_use:
+                markdown = convert_to_markdown(div_html, converter)
+                content.append({"converter": converter, "markdown": markdown})
+
+            item["content"] = content
+            item["timestamp"] = iso_to_toc_format(ts)  # Ensure ISO8601 format
 
     # Save updated TOC and cache to disk
     save_json(toc, OUTPUT_PATH)
@@ -64,6 +75,11 @@ if __name__ == "__main__":
     group = parser.add_mutually_exclusive_group()
     group.add_argument("--fetch-missing", action="store_true", help="Fetch only missing URLs.")
     group.add_argument("--force", action="store_true", help="Force fetch all URLs.")
+    parser.add_argument(
+        "--markdown-converter",
+        choices=list(AVAILABLE_CONVERTERS.keys()),
+        help="Select the Markdown converter to use. If not specified, all converters will be used."
+    )
     args = parser.parse_args()
 
-    sync(fetch_missing=args.fetch_missing, force=args.force)
+    sync(fetch_missing=args.fetch_missing, force=args.force, markdown_converter=args.markdown_converter)

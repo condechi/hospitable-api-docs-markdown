@@ -1,6 +1,13 @@
 # backend/convert.py
 from bs4 import BeautifulSoup
-from markdownify import markdownify as md
+from markdownify import markdownify as md_markdownify
+import html2text
+
+# Define available converters
+AVAILABLE_CONVERTERS = {
+    "markdownify": lambda html: md_markdownify(html, heading_style="ATX"),
+    "markitdown": lambda html: html2text.HTML2Text().handle(html),
+}
 
 
 def extract_main_div(html: str) -> str:
@@ -18,14 +25,17 @@ def extract_main_div(html: str) -> str:
     return str(div) if div else "<div>[Missing content]</div>"
 
 
-def convert_to_markdown(html: str) -> str:
+def convert_to_markdown(html: str, converter: str) -> str:
     """
-    Convert HTML string to clean Markdown using markdownify.
+    Convert HTML string to Markdown using the selected converter.
 
     Args:
         html (str): HTML input string.
+        converter (str): The Markdown converter to use (e.g., "markdownify", "markitdown").
 
     Returns:
         str: Markdown-formatted content.
     """
-    return md(html, heading_style="ATX")
+    if converter not in AVAILABLE_CONVERTERS:
+        raise ValueError(f"Unsupported Markdown converter: {converter}")
+    return AVAILABLE_CONVERTERS[converter](html)
