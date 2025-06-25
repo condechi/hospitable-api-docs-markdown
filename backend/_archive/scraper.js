@@ -10,6 +10,10 @@ const SCRAPE_CACHE_PATH = path.resolve(__dirname, 'scrape_cache.json');
 const OUTPUT_PATH = path.resolve(__dirname, 'API_DOCS_improved.md');
 const turndownService = new TurndownService();
 
+/**
+ * Load the scrape cache from the file system.
+ * @returns {Object} The scrape cache as a JSON object.
+ */
 function loadScrapeCache() {
   if (fs.existsSync(SCRAPE_CACHE_PATH)) {
     return JSON.parse(fs.readFileSync(SCRAPE_CACHE_PATH, 'utf8'));
@@ -17,10 +21,20 @@ function loadScrapeCache() {
   return {};
 }
 
+/**
+ * Save the scrape cache to the file system.
+ * @param {Object} cache - The scrape cache to save.
+ */
 function saveScrapeCache(cache) {
   fs.writeFileSync(SCRAPE_CACHE_PATH, JSON.stringify(cache, null, 2));
 }
 
+/**
+ * Fetch HTML content using Puppeteer.
+ * @param {string} url - The URL to fetch.
+ * @param {boolean} force - Whether to force fetch even if cached.
+ * @returns {string} The fetched HTML content.
+ */
 async function fetchHtmlWithPuppeteer(url, force) {
   const scrapeCache = loadScrapeCache();
   const now = Date.now();
@@ -55,6 +69,9 @@ async function fetchHtmlWithPuppeteer(url, force) {
   return html;
 }
 
+/**
+ * Main function to process the TOC and generate Markdown documentation.
+ */
 async function main() {
   const force = process.argv.includes('--force');
 
@@ -66,6 +83,11 @@ async function main() {
   const toc = JSON.parse(fs.readFileSync(TOC_CACHE_PATH, 'utf8'));
   let markdownOutput = '# Hospitable API Documentation\n\n';
 
+  /**
+   * Process a single TOC node recursively.
+   * @param {Object} node - The TOC node to process.
+   * @param {number} currentLevel - The current depth level in the TOC.
+   */
   async function processNode(node, currentLevel) {
     if (node.path) {
       const url = `${BASE_URL}${node.path}`;

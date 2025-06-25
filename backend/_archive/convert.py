@@ -86,6 +86,16 @@ def fetch_html(url):
     return html, timestamp
 
 def main(fetch_missing=False, force=False):
+    """
+    Main function to sync TOC with scrape cache.
+
+    Args:
+        fetch_missing (bool): If True, fetch missing URLs and cache them.
+        force (bool): If True, force fetching all TOC URLs and rebuild the cache.
+
+    Returns:
+        None
+    """
     toc = load_json(TOC_FILE)
     cache = {} if force else load_json(CACHE_FILE)
 
@@ -96,11 +106,13 @@ def main(fetch_missing=False, force=False):
         url = item.get("url")
         title = item.get("title")
 
+        # Handle items without URLs
         if not url:
             item["content"] = title
             item["timestamp"] = datetime.now(timezone.utc).isoformat(timespec="seconds") + "Z"
             continue
 
+        # Fetch content if necessary
         if force or fetch_missing and url not in cache:
             try:
                 html, timestamp = fetch_html(url)
@@ -122,6 +134,7 @@ def main(fetch_missing=False, force=False):
             item["content"] = "[Missing from cache]"
             item["timestamp"] = item.get("timestamp", "")
 
+    # Print summary of missing and stale URLs
     print("\n📌 Summary:")
     if missing_urls:
         print("🚫 Missing in cache:")
@@ -132,6 +145,7 @@ def main(fetch_missing=False, force=False):
         for u in stale_urls:
             print(" -", u)
 
+    # Save updated TOC and cache
     save_json(toc, OUTPUT_FILE)
     save_json(cache, CACHE_FILE)
     print(f"\n✅ TOC saved to {OUTPUT_FILE}")

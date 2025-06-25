@@ -17,6 +17,9 @@ def sync(fetch_missing=False, force=False):
     Args:
         fetch_missing (bool): If True, only fetch entries not in the cache.
         force (bool): If True, fetch all entries regardless of cache.
+
+    Returns:
+        None
     """
     toc = load_json(TOC_PATH)
     cache = {} if force else load_json(CACHE_PATH)
