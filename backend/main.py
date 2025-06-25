@@ -1,0 +1,66 @@
+# backend/main.py
+import argparse
+from pathlib import Path
+from backend.fetch import fetch_html
+from backend.toc import load_json, save_json, iso_to_toc_format, is_stale, now_fmt
+from backend.convert import extract_main_div, convert_to_markdown
+
+# Define paths to source and output files
+TOC_PATH = Path("toc_cache.json")
+CACHE_PATH = Path("scrape_cache.json")
+OUTPUT_PATH = Path("toc_updated.json")
+
+def sync(fetch_missing=False, force=False):
+    """
+    Syncs the TOC entries with cached or newly fetched documentation content.
+
+    Args:
+        fetch_missing (bool): If True, only fetch entries not in the cache.
+        force (bool): If True, fetch all entries regardless of cache.
+    """
+    toc = load_json(TOC_PATH)
+    cache = {} if force else load_json(CACHE_PATH)
+
+    for item in toc:
+        url = item.get("url")
+        title = item.get("title")
+
+        # If URL is null, use the title as placeholder content
+        if not url:
+            item["content"] = title
+            item["timestamp"] = now_fmt()
+            continue
+
+        # Determine whether we need to fetch content
+        if force or (fetch_missing and url not in cache):
+            try:
+                res = fetch_html(url)
+                html = res["html"]
+                ts = res["timestamp"]
+                cache[url] = {"html": html, "timestamp": ts}
+            except Exception as e:
+                print(f"❌ Failed to fetch {url}: {e}")
+                continue
+
+        # Extract and convert HTML to Markdown, update TOC item
+        if url in cache:
+            html = cache[url].get("html", "")
+            ts = cache[url].get("timestamp", now_fmt())
+            div_html = extract_main_div(html)
+            markdown = convert_to_markdown(div_html)
+            item["content"] = markdown
+            item["timestamp"] = iso_to_toc_format(ts)
+
+    # Save updated TOC and cache to disk
+    save_json(toc, OUTPUT_PATH)
+    save_json(cache, CACHE_PATH)
+    print("✅ toc_updated.json and scrape_cache.json updated.")
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Sync TOC and scrape content.")
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("--fetch-missing", action="store_true", help="Fetch only missing URLs.")
+    group.add_argument("--force", action="store_true", help="Force fetch all URLs.")
+    args = parser.parse_args()
+
+    sync(fetch_missing=args.fetch_missing, force=args.force)

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hospitable API Markdown Viewer</title>
+  <link rel="stylesheet" href="./dist/output.css" />
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <div class="max-w-7xl mx-auto p-4">
+    <h1 class="text-3xl font-bold mb-4">Hospitable API Docs</h1>
+
+    <div class="flex flex-col md:flex-row gap-4">
+      <aside class="w-full md:w-1/4 bg-white p-4 shadow-md rounded-md">
+        <h2 class="text-xl font-semibold mb-2">Table of Contents</h2>
+        <ul id="toc" class="space-y-1 text-blue-600 cursor-pointer text-sm"></ul>
+      </aside>
+
+      <main class="w-full md:w-3/4 bg-white p-4 shadow-md rounded-md">
+        <div class="flex justify-between items-center mb-2">
+          <h2 id="title" class="text-xl font-bold"></h2>
+          <div class="space-x-2">
+            <a id="originalLink" target="_blank" class="text-sm text-blue-500 underline">Original</a>
+            <span id="timestamp" class="text-sm text-gray-500"></span>
+            <button id="copyBtn" class="text-sm bg-blue-500 text-white px-2 py-1 rounded">Copy .md</button>
+            <button id="downloadBtn" class="text-sm bg-green-500 text-white px-2 py-1 rounded">Download .md</button>
+          </div>
+        </div>
+        <pre class="overflow-auto bg-gray-50 p-4 text-sm rounded" id="markdownDisplay">Select a title from the TOC</pre>
+      </main>
+    </div>
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>

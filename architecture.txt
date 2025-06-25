@@ -1,0 +1,27 @@
+hospitable-docs-scraper/
+├── backend/
+│   ├── __init__.py
+│   ├── fetch.py               # Handles Puppeteer fetching
+│   ├── cache.py               # Manages scrape_cache.json
+│   ├── toc.py                 # Handles toc_cache.json flattening, timestamp updates
+│   ├── convert.py             # Converts HTML to Markdown (Turndown / BeautifulSoup)
+│   └── main.py                # CLI orchestrator (was `scrape_toc.py`)
+│
+├── frontend/
+│   ├── index.html
+│   ├── style.css
+│   ├── script.js              # TOC rendering + Marked.js
+│   └── toc_updated.json       # Output JSON consumed by web UI
+│
+├── docs/
+│   └── README.md
+│
+├── tests/
+│   ├── test_cache.py
+│   ├── test_toc.py
+│   └── ...
+│
+├── package.json              # If you go for React/Vite later
+├── requirements.txt
+├── .env
+└── Makefile or run.sh
