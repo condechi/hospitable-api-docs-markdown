@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Hospitable API Markdown Viewer</title>
   <link rel="stylesheet" href="./dist/output.css" />
+  <link href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown.min.css">
+
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 0;
+    }
+  </style>
+
 </head>
+
 <body class="bg-gray-100 text-gray-900">
   <div class="max-w-7xl mx-auto p-4">
     <h1 class="text-3xl font-bold mb-4">Hospitable API Docs</h1>
@@ -19,16 +31,35 @@
         <div class="flex justify-between items-center mb-2">
           <h2 id="title" class="text-xl font-bold"></h2>
           <div class="space-x-2">
-            <a id="originalLink" target="_blank" class="text-sm text-blue-500 underline">Original</a>
-            <span id="timestamp" class="text-sm text-gray-500"></span>
+            <!--
+            <a id="originalLink2" target="_blank" class="text-sm text-blue-500 underline">Original</a>
+            <span id="timestamp2" class="text-sm text-gray-500"></span>
+          
+            <button id="apiTab" class="tab">API Reference</button>
+          -->
             <button id="copyBtn" class="text-sm bg-blue-500 text-white px-2 py-1 rounded">Copy .md</button>
             <button id="downloadBtn" class="text-sm bg-green-500 text-white px-2 py-1 rounded">Download .md</button>
           </div>
         </div>
-        <pre class="overflow-auto bg-gray-50 p-4 text-sm rounded" id="markdownDisplay">Select a title from the TOC</pre>
-      </main>
+        <!-- Tabs for Markdown Versions -->
+        <div id="versionTabs" class="tabs mb-2 flex gap-2"></div>
+
+        <!-- Markdown / API Reference Display Area -->
+        <div id="markdownContainer"
+          class="markdown-body border p-4 bg-white rounded max-h-[70vh] overflow-auto text-base leading-relaxed">
+          Select a title from the TOC
+          <div id="apiContent"></div>
+        </div>
+        <div class="space-x-2">
+          <a id="originalLink" target="_blank" class="text-sm text-blue-500 underline">Original</a>
+          <span id="timestamp" class="text-sm text-gray-500"></span>
+        </div>
     </div>
+    </main>
   </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="./script.js"></script>
 </body>
+
 </html>

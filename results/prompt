@@ -1,0 +1,138 @@
+implement the feature where users can select different markdown versions for each section they are viewing, and display them as tabs on top of the markdown box, we need to make some modifications to the frontend. Below is a step-by-step guide to achieve this functionality:
+
+1. Frontend Structure
+We will use a combination of HTML, CSS, and JavaScript (or a frontend framework like React, Vue, or Angular if applicable) to create the tabbed interface.
+
+HTML Structure
+Each section of the markdown documentation will have a container with tabs on top. Each tab will correspond to a different markdown version.
+
+<div class="markdown-section">
+  <div class="tabs">
+    <button class="tab active" data-version="v1">Version 1</button>
+    <button class="tab" data-version="v2">Version 2</button>
+    <button class="tab" data-version="v3">Version 3</button>
+  </div>
+  <div class="markdown-content">
+    <!-- Markdown content will be dynamically loaded here -->
+    <div class="content" id="v1">Markdown content for Version 1</div>
+    <div class="content hidden" id="v2">Markdown content for Version 2</div>
+    <div class="content hidden" id="v3">Markdown content for Version 3</div>
+  </div>
+</div>
+
+2. CSS for Styling
+We will style the tabs and markdown content to make them visually appealing and functional.
+
+/* Tabs styling */
+.tabs {
+  display: flex;
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background: #f9f9f9;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-right: 5px;
+}
+
+.tab.active {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  font-weight: bold;
+}
+
+/* Markdown content styling */
+.markdown-content {
+  border: 1px solid #ccc;
+  padding: 15px;
+  background: #fff;
+  border-radius: 5px;
+}
+
+.content {
+  display: none;
+}
+
+.content:not(.hidden) {
+  display: block;
+}
+
+3. JavaScript for Dynamic Behavior
+We will use JavaScript to handle the tab switching and dynamically refresh the markdown content.
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Add event listeners to all tabs
+  const tabs = document.querySelectorAll(".tab");
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", (event) => {
+      const selectedVersion = event.target.dataset.version;
+
+      // Remove active class from all tabs
+      tabs.forEach((t) => t.classList.remove("active"));
+
+      // Add active class to the clicked tab
+      event.target.classList.add("active");
+
+      // Hide all markdown content
+      const contents = event.target.closest(".markdown-section").querySelectorAll(".content");
+      contents.forEach((content) => content.classList.add("hidden"));
+
+      // Show the selected markdown version
+      const selectedContent = event.target.closest(".markdown-section").querySelector(`#${selectedVersion}`);
+      selectedContent.classList.remove("hidden");
+    });
+  });
+});
+
+4. Dynamic Content Loading (Optional)
+If the markdown content for each version is fetched dynamically (e.g., via an API), you can modify the JavaScript to fetch and display the content when a tab is clicked.
+
+document.addEventListener("DOMContentLoaded", () => {
+  const tabs = document.querySelectorAll(".tab");
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", async (event) => {
+      const selectedVersion = event.target.dataset.version;
+
+      // Remove active class from all tabs
+      tabs.forEach((t) => t.classList.remove("active"));
+      event.target.classList.add("active");
+
+      // Hide all markdown content
+      const contents = event.target.closest(".markdown-section").querySelectorAll(".content");
+      contents.forEach((content) => content.classList.add("hidden"));
+
+      // Fetch and display the selected markdown version
+      const selectedContent = event.target.closest(".markdown-section").querySelector(`#${selectedVersion}`);
+      if (!selectedContent.dataset.loaded) {
+        const markdownData = await fetchMarkdownContent(selectedVersion); // Replace with your API call
+        selectedContent.innerHTML = markdownData;
+        selectedContent.dataset.loaded = true;
+      }
+      selectedContent.classList.remove("hidden");
+    });
+  });
+
+  async function fetchMarkdownContent(version) {
+    // Replace with your API endpoint
+    const response = await fetch(`/api/markdown?version=${version}`);
+    const data = await response.text();
+    return data;
+  }
+});
+
+5. Integration with Markdown Converter
+If you are using a markdown converter (e.g., marked.js or showdown.js), you can process the fetched markdown content before displaying it.
+
+const markdownConverter = new showdown.Converter();
+
+async function fetchMarkdownContent(version) {
+  const response = await fetch(`/api/markdown?version=${version}`);
+  const markdown = await response.text();
+  return markdownConverter.makeHtml(markdown); // Convert markdown to HTML
+}

@@ -1,0 +1,159 @@
+
+        <div class="border rounded shadow p-4 my-4 bg-white">
+          <h3 class="text-xl font-semibold mb-1">GET <span class="text-blue-600">/properties</span></h3>
+          <p class="text-sm text-gray-600 mb-2">Get Properties</p>
+          <p class="text-sm text-gray-700 mb-4"><!-- theme: warning -->
+> 📘 Available includes:
+> 
+> - user
+> - listings (required: `listing:read` scope)
+> - details
+> - bookings</p>
+
+          <h4 class="font-semibold mt-2 mb-1">Parameters</h4>
+          <table class="table-auto border w-full text-sm mb-4">
+            <thead><tr><th class='border px-2 py-1'>Name</th><th class='border px-2 py-1'>In</th><th class='border px-2 py-1'>Type</th><th class='border px-2 py-1'>Description</th></tr></thead>
+            <tbody><tr><td class='border px-2 py-1'>include</td><td class='border px-2 py-1'>query</td><td class='border px-2 py-1'>string</td><td class='border px-2 py-1'>What relationships of the property should be included in the response.</td></tr><tr><td class='border px-2 py-1'>Content-Type</td><td class='border px-2 py-1'>header</td><td class='border px-2 py-1'>string</td><td class='border px-2 py-1'></td></tr><tr><td class='border px-2 py-1'>page</td><td class='border px-2 py-1'>query</td><td class='border px-2 py-1'>integer</td><td class='border px-2 py-1'>The page of results to return.</td></tr><tr><td class='border px-2 py-1'>per_page</td><td class='border px-2 py-1'>query</td><td class='border px-2 py-1'>integer</td><td class='border px-2 py-1'>The number of results to include per page.</td></tr></tbody>
+          </table>
+
+          <h4 class="font-semibold mt-2 mb-1">Responses</h4>
+          
+            <div class="mb-4">
+              <div class="font-semibold text-gray-800">Status 200: 200</div>
+              <pre class="bg-gray-100 p-2 rounded text-xs overflow-auto"><code>{
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "x-stoplight": {
+          "id": "ztk1jvfev2sv1"
+        },
+        "allOf": [
+          {
+            "$ref": "../PropertyFull.json",
+            "x-stoplight": {
+              "id": "14nbvvak757r2"
+            }
+          }
+        ]
+      }
+    },
+    "links": {
+      "type": "object",
+      "properties": {
+        "first": {
+          "type": "string",
+          "example": "https://public.api.hospitable.com/v2/properties?page=1"
+        },
+        "last": {
+          "type": "string",
+          "example": "https://public.api.hospitable.com/v2/properties?page=2"
+        },
+        "prev": {},
+        "next": {
+          "type": "string",
+          "example": "https://public.api.hospitable.com/v2/properties?page=2"
+        }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "current_page": {
+          "type": "integer",
+          "example": 1,
+          "default": 0
+        },
+        "from": {
+          "type": "integer",
+          "example": 1,
+          "default": 0
+        },
+        "last_page": {
+          "type": "integer",
+          "example": 2,
+          "default": 0
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": {},
+              "label": {
+                "type": "string",
+                "example": "&laquo; Previous"
+              },
+              "active": {
+                "type": "boolean",
+                "example": false,
+                "default": true
+              }
+            }
+          }
+        },
+        "path": {
+          "type": "string",
+          "example": "https://public.api.hospitable.com/v2/properties"
+        },
+        "per_page": {
+          "type": "integer",
+          "example": 10,
+          "default": 10,
+          "maximum": 100
+        },
+        "to": {
+          "type": "integer",
+          "example": 10,
+          "default": 0
+        },
+        "total": {
+          "type": "integer",
+          "example": 15,
+          "default": 0
+        }
+      }
+    }
+  }
+}</code></pre>
+            </div>
+            
+            <div class="mb-4">
+              <div class="font-semibold text-gray-800">Status 400: 400</div>
+              <pre class="bg-gray-100 p-2 rounded text-xs overflow-auto"><code>{
+  "type": "object",
+  "properties": {
+    "status_code": {
+      "type": "integer",
+      "example": 400,
+      "default": 0
+    },
+    "reason_phrase": {
+      "type": "string",
+      "example": "Invalid pagination parameter supplied."
+    }
+  }
+}</code></pre>
+            </div>
+            
+            <div class="mb-4">
+              <div class="font-semibold text-gray-800">Status 404: 404</div>
+              <pre class="bg-gray-100 p-2 rounded text-xs overflow-auto"><code>{
+  "type": "object",
+  "x-sl-internally-excluded": true,
+  "x-sl-error-message": "You do not have permission to view this reference"
+}</code></pre>
+            </div>
+            
+            <div class="mb-4">
+              <div class="font-semibold text-gray-800">Status 500: 500</div>
+              <pre class="bg-gray-100 p-2 rounded text-xs overflow-auto"><code>{
+  "type": "object",
+  "x-sl-internally-excluded": true,
+  "x-sl-error-message": "You do not have permission to view this reference"
+}</code></pre>
+            </div>
+            
+        </div>
+        

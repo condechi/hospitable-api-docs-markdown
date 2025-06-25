@@ -2,7 +2,7 @@
 import argparse
 from pathlib import Path
 from backend.fetch import fetch_html
-from backend.toc import load_json, save_json, iso_to_toc_format, is_stale, now_fmt
+from backend.toc import load_json, save_json, iso_to_toc_format, now_fmt
 from backend.convert import extract_main_div, convert_to_markdown, AVAILABLE_CONVERTERS
 
 # Define paths to source and output files
@@ -30,10 +30,14 @@ def sync(fetch_missing=False, force=False, markdown_converter=None):
         url = item.get("url")
         title = item.get("title")
 
-        # If URL is null, use the title as placeholder content
+        # Initialize the versions object
+        versions = {}
+
+        # If URL is null, use the title as the default version
         if not url:
-            item["content"] = [{"converter": "placeholder", "markdown": title}]
-            item["timestamp"] = now_fmt()  # Use ISO8601 format
+            versions["default"] = title
+            item["versions"] = versions
+            item["timestamp"] = now_fmt()
             continue
 
         # Determine whether we need to fetch content
@@ -50,20 +54,22 @@ def sync(fetch_missing=False, force=False, markdown_converter=None):
         # Extract and convert HTML to Markdown, update TOC item
         if url in cache:
             html = cache[url].get("html", "")
-            ts = cache[url].get("timestamp", now_fmt())  # Use ISO8601 format
+            ts = cache[url].get("timestamp", now_fmt())
             div_html = extract_main_div(html)
 
+            # Add the default version as the raw HTML
+            versions["default"] = div_html
+
             # Generate Markdown for all converters or a specific one
-            content = []
             converters_to_use = (
                 [markdown_converter] if markdown_converter else AVAILABLE_CONVERTERS.keys()
             )
             for converter in converters_to_use:
                 markdown = convert_to_markdown(div_html, converter)
-                content.append({"converter": converter, "markdown": markdown})
+                versions[converter] = markdown
 
-            item["content"] = content
-            item["timestamp"] = iso_to_toc_format(ts)  # Ensure ISO8601 format
+            item["versions"] = versions
+            item["timestamp"] = iso_to_toc_format(ts)
 
     # Save updated TOC and cache to disk
     save_json(toc, OUTPUT_PATH)
