@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hospitable API Markdown Viewer</title>
+    <link rel="stylesheet" href="./dist/output.css" />
+    <link href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown.min.css">
+
+    <style>
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 0;
+        }
+    </style>
+
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+    <div class="max-w-7xl mx-auto p-4">
+        <h1 class="text-3xl font-bold mb-4">Hospitable API Docs</h1>
+
+        <div class="flex flex-col md:flex-row gap-4">
+            <aside class="w-full md:w-1/4 bg-white p-4 shadow-md rounded-md">
+                <h2 class="text-xl font-semibold mb-2">Table of Contents</h2>
+                <ul id="toc" class="space-y-1 text-blue-600 cursor-pointer text-sm"></ul>
+            </aside>
+
+            <main class="w-full md:w-3/4 bg-white p-4 shadow-md rounded-md">
+                <div id="swagger-ui"></div>
+
+
+
+                <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css">
+
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"></script>
+                <script>
+                    window.onload = () => {
+                        SwaggerUIBundle({
+                            url: "./public_1.json",
+                            dom_id: '#swagger-ui',
+                            presets: [SwaggerUIBundle.presets.apis],
+                            layout: "BaseLayout"
+                        });
+                    };
+                </script>
+            </main>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>
+

@@ -34,9 +34,9 @@
             <!--
             <a id="originalLink2" target="_blank" class="text-sm text-blue-500 underline">Original</a>
             <span id="timestamp2" class="text-sm text-gray-500"></span>
-          
             <button id="apiTab" class="tab">API Reference</button>
-          -->
+            -->
+
             <button id="copyBtn" class="text-sm bg-blue-500 text-white px-2 py-1 rounded">Copy .md</button>
             <button id="downloadBtn" class="text-sm bg-green-500 text-white px-2 py-1 rounded">Download .md</button>
           </div>
@@ -48,14 +48,34 @@
         <div id="markdownContainer"
           class="markdown-body border p-4 bg-white rounded max-h-[70vh] overflow-auto text-base leading-relaxed">
           Select a title from the TOC
-          <div id="apiContent"></div>
+          <!-- <div id="apiContent" class="prose dark:prose-invert text-white bg-gray-900 p-4 rounded-lg"></div> -->
         </div>
-        <div class="space-x-2">
-          <a id="originalLink" target="_blank" class="text-sm text-blue-500 underline">Original</a>
-          <span id="timestamp" class="text-sm text-gray-500"></span>
-        </div>
+        <div id="swagger-ui"></div>
+
+
+
+        <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css">
+
+        <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"></script>
+        <script>
+          window.onload = () => {
+            SwaggerUIBundle({
+              url: "./webhooks.json",
+              dom_id: '#swagger-ui',
+              presets: [SwaggerUIBundle.presets.apis],
+              layout: "BaseLayout"
+            });
+          };
+        </script>
+
+
     </div>
-    </main>
+    <div class="space-x-2">
+      <a id="originalLink" target="_blank" class="text-sm text-blue-500 underline">Original</a>
+      <span id="timestamp" class="text-sm text-gray-500"></span>
+    </div>
+  </div>
+  </main>
   </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>

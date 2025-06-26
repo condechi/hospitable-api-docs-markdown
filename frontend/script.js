@@ -78,68 +78,8 @@ function init() {
     container.innerHTML = window.marked.parse(markdownText || "(No markdown available)");
   }
 
-  function renderAPIReference() {
-    if (!selectedEntry?.title) {
-      container.textContent = "No API section selected.";
-      return;
-    }
 
-    const entrySlug = selectedEntry.title.toLowerCase().replace(/\s+/g, "-");
-    const matches = (publicData?.tags || []).filter(t =>
-      t.name?.toLowerCase()?.includes(entrySlug)
-    );
 
-    if (matches.length === 0) {
-      container.innerHTML = "<p class='text-gray-500'>No API Reference found for this section.</p>";
-      return;
-    }
-
-    const apis = publicData.paths || {};
-    let html = "";
-
-    for (const [endpoint, methods] of Object.entries(apis)) {
-      for (const [method, obj] of Object.entries(methods)) {
-        const tags = obj.tags?.map(t => t.toLowerCase()) || [];
-        if (!tags.some(tag => tag.includes(entrySlug))) continue;
-
-        html += `
-          <div class="mb-6 border-b pb-4">
-            <div class="text-sm font-mono bg-gray-100 px-2 py-1 rounded inline-block text-blue-600">${method.toUpperCase()}</div>
-            <code class="ml-2 text-sm font-mono">${endpoint}</code>
-            <p class="mt-1 text-gray-700 text-sm">${obj.summary ?? ""}</p>
-        `;
-
-        if (obj.parameters?.length) {
-          html += `<h4 class="mt-2 font-semibold text-sm">Parameters</h4><table class="table-auto w-full text-sm mt-1 mb-2"><thead><tr><th class="text-left">Name</th><th>In</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody>`;
-          obj.parameters.forEach(param => {
-            html += `<tr class="border-t"><td>${param.name}</td><td>${param.in}</td><td>${param.schema?.type ?? ''}</td><td>${param.required}</td><td>${param.description ?? ''}</td></tr>`;
-          });
-          html += `</tbody></table>`;
-        }
-
-        if (obj.requestBody?.content) {
-          html += `<h4 class="font-semibold text-sm mt-2">Request Body</h4>`;
-          const appJson = obj.requestBody.content["application/json"];
-          if (appJson?.example) {
-            html += `<pre class="bg-gray-50 p-2 rounded text-xs overflow-auto">${JSON.stringify(appJson.example, null, 2)}</pre>`;
-          } else if (appJson?.schema) {
-            html += `<pre class="bg-gray-50 p-2 rounded text-xs overflow-auto">${JSON.stringify(appJson.schema, null, 2)}</pre>`;
-          }
-        }
-
-        if (obj.responses) {
-          html += `<h4 class="font-semibold text-sm mt-2">Responses</h4>`;
-          for (const [code, res] of Object.entries(obj.responses)) {
-            html += `<div class="mb-1"><span class="inline-block bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded">${code}</span> ${res.description || ''}</div>`;
-          }
-        }
-
-        html += "</div>";
-      }
-    }
-
-    container.innerHTML = html || "<p class='text-gray-500'>No matching API endpoints found.</p>";
-  }
 }
 
 // ✅ Wait for DOM and JSON before init

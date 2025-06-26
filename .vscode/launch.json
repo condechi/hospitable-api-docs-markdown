@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "chrome",
+            "name": "http://127.0.0.1:3001/",
+            "request": "launch",
+            "url": "http://127.0.0.1:3001/"
+        },
+        {
+            "type": "chrome",
+            "name": "http://127.0.0.1:3001/frontend/api_reference.html",
+            "request": "launch",
+            "url": "http://127.0.0.1:3001/frontend/api_reference.html"
+        },
+        {
+            "type": "chrome",
+            "name": "http://127.0.0.1:3000/frontend/api_reference.html",
+            "request": "launch",
+            "url": "http://127.0.0.1:3000/frontend/api_reference.html"
+        }
+    ]
+}
